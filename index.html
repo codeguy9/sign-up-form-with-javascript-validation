@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>
+		Sign-up form
+	</title>
+	<link rel="stylesheet" href="style.css">
+	
+</head>
+
+<body>
+	<div id="background">
+	<main>
+		<article>
+			<h1>Learn to code by watching others</h1>
+			<p>See how experienced developers solve problems in real-time. Watching scripted tutorials is great, but understanding how developers think is              invaluable</p>
+			
+		</article>
+		
+		<aside>
+			<button class="try"><span class="seven">Try it free 7 days</span> then $20/<small>mo.</small> thereafter</button>
+			
+			<form method="post" onsubmit="return validateForm()" id="form">
+				<input type="text" name="firstname" id="firstname" placeholder="First Name"><span id="name-error-first"></span>
+				<input type="text" name="lastname" id="lastname" placeholder="Last Name"><span id="name-error-last"></span>
+				<input type="email" name="email" id="email" placeholder="Email Address"><span id="email-error"></span>
+				<input type="password" name="password" id="pass" placeholder="Password"><span id="password-error"></span>
+				<button type="submit" id="trial">claim your free trial</button>
+				<p id="form-output"></p>
+				
+				<h6>By clicking the button you are agreeing to our <span class="terms">Terms and Services</span></h6>
+				
+				
+			</form>
+			
+			
+		</aside>
+		
+	</main>
+</div>
+	
+	
+	
+	<script>
+		function validateForm () {
+			const firstName = document.querySelector('#firstname').value;
+			const lastName = document.querySelector('#lastname').value;
+			const email = document.querySelector('#email').value;
+			const pass = document.querySelector('#pass').value;
+			
+			const firstNameError = document.querySelector('#name-error-first');
+			const lastNameError = document.querySelector('#name-error-last');
+			const emailError = document.querySelector('#email-error');
+			const passError = document.querySelector('#password-error');
+			
+			firstNameError.textContent = "";
+			lastNameError.textContent = "";
+			emailError.textContent = "";
+			passError.textContent = "";
+			
+			let isValid = true;
+			
+			if (firstName === "") {
+				firstNameError.textContent = "Please enter your first name.";
+				isValid = false;
+			}
+			
+			if (lastName === "") {
+				lastNameError.textContent = "Please enter your last name.";
+				isValid = false;
+			}
+			
+			if (email === "" || !email.includes('@')) {
+				emailError.textContent = "Please enter a valid email address."
+				isValid = false;
+			}
+			
+			if (pass === "" || pass.length < 8) {
+				passError.textContent = "Please enter a password with at least 8 characters."
+				isValid = false;
+			}
+			
+			return isValid;
+		}
+		
+		let form = document.querySelector('#form');
+		let output = document.querySelector('#form-output');
+		
+		form.addEventListener('submit', function (e) {
+		    
+			let text = "Thank you! Your trial has begun. Enjoy!";
+			text = output;
+			
+
+		});
+			
+	</script>
+	
+</body>
+</html>
